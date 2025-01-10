@@ -6,6 +6,9 @@ RUN wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev
 ENV PATH="$PATH:/opt/calibre/"
 ENV TZ=Asia/Shanghai
 
+VOLUME [ "/app/cache" ]
+VOLUME [ "/app/uploads" ]
+
 WORKDIR /app
 
 COPY bookstack ./
