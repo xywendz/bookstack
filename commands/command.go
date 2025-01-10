@@ -235,20 +235,23 @@ func RegisterFunction() {
 
 func ResolveCommand(args []string) {
 	flagSet := flag.NewFlagSet("MinDoc command: ", flag.ExitOnError)
-	flagSet.StringVar(&ConfigurationFile, "config", "", "BookStack configuration file.")
+	var configFile string
+	flagSet.StringVar(&configFile, "config", "", "BookStack configuration file.")
 	flagSet.StringVar(&LogFile, "log", "", "BookStack log file path.")
 
 	flagSet.Parse(args)
 
-	if ConfigurationFile == "" {
-		ConfigurationFile = filepath.Join("conf", "app.conf")
+	if configFile == "" {
 		config := filepath.Join("conf", "app.conf.example")
 		if !utils.FileExists(ConfigurationFile) && utils.FileExists(config) {
 			utils.CopyFile(ConfigurationFile, config)
 		}
 	}
-	gocaptcha.ReadFonts(filepath.Join("static", "fonts"), ".ttf")
 
+	staticFonts := beego.AppConfig.String("static_fonts")
+	if staticFonts == "" {
+		staticFonts = "static/fonts"
+	}
 	err := beego.LoadAppConfig("ini", ConfigurationFile)
 
 	if err != nil {
@@ -263,12 +266,10 @@ func ResolveCommand(args []string) {
 	// beego.BConfig.WebConfig.StaticDir["/uploads"] = uploads
 	beego.BConfig.WebConfig.ViewsPath = filepath.Join("views")
 
-	fonts := filepath.Join("static", "fonts")
-
-	if !utils.FileExists(fonts) {
-		log.Fatal("Font path not exist.")
+	if !utils.FileExists(staticFonts) {
+		log.Println("Font path not exist.")
 	}
-	gocaptcha.ReadFonts(filepath.Join("static", "fonts"), ".ttf")
+	gocaptcha.ReadFonts(staticFonts, ".ttf")
 
 	RegisterDataBase()
 	RegisterModel()

@@ -181,7 +181,7 @@ func (m *Ebook) CheckAndGenerateEbook() {
 
 }
 
-//离线文档生成
+// 离线文档生成
 func (m *Ebook) generate(bookID int) {
 	book, err := NewBook().Find(bookID)
 	if err != nil {
@@ -360,6 +360,7 @@ func (m *Ebook) generate(bookID int) {
 	if err = Convert.Convert(); err != nil && err.Error() != "" {
 		beego.Error(err.Error())
 	}
+
 	// 转换已经结束，还处在转换状态的电子书为失败的电子书
 	o.QueryTable(m).Filter("book_id", book.BookId).Filter("status", EBookStatusProccessing).Update(orm.Params{"status": EBookStatusFailure})
 }

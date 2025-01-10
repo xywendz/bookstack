@@ -626,7 +626,7 @@ func (this *DocumentController) Create() {
 		if book.BookId == 0 {
 			this.JsonResult(1, "书籍未创建")
 		}
-
+		docIdentify := ""
 		d, _ := models.NewDocument().FindByBookIdAndDocIdentify(book.BookId, docIdentify)
 		if d.DocumentId > 0 && d.DocumentId != docId {
 			this.JsonResult(6006, "文档标识已被使用")
