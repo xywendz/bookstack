@@ -1,0 +1,356 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load .dockerignore
+#1 transferring context: 2B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 729B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/golang:1.23
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/ubuntu:24.10
+#4 DONE 0.0s
+
+#5 [base 1/6] FROM docker.io/library/golang:1.23
+#5 DONE 0.0s
+
+#6 [stage-1  1/10] FROM docker.io/library/ubuntu:24.10
+#6 DONE 0.0s
+
+#7 [stage-1  2/10] RUN apt-get update && apt-get install -y python3 wget
+#7 CACHED
+
+#8 [stage-1  3/10] RUN apt-get install -y libegl1  libopengl0 libxcb-cursor0 libfreetype6 xz-utils
+#8 CACHED
+
+#9 [internal] load build context
+#9 transferring context: 101.13kB 0.1s done
+#9 DONE 0.1s
+
+#10 [base 3/6] COPY go.mod go.sum ./
+#10 CACHED
+
+#11 [base 2/6] WORKDIR /app
+#11 CACHED
+
+#12 [base 4/6] RUN go mod download && go mod verify
+#12 CACHED
+
+#13 [base 5/6] COPY . .
+#13 DONE 2.6s
+
+#14 [stage-1  4/10] RUN wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
+#14 2.200 Using python executable: /usr/bin/python3
+#14 3.141 2025-01-10 11:30:24 URL:https://download.calibre-ebook.com/linux-installer.sh [35050/35050] -> "-" [1]
+#14 4.289 Will download and install calibre-7.24.0-x86_64.txz 
+#14 4.297 Downloading calibre-7.24.0-x86_64.txz 
+#14 ...
+
+#15 [base 6/6] RUN CGO_ENABLED=0 go build -v -o main .
+#15 4.661 internal/unsafeheader
+#15 4.662 internal/goarch
+#15 4.766 internal/cpu
+#15 4.768 internal/abi
+#15 4.890 internal/bytealg
+#15 5.013 internal/byteorder
+#15 5.102 internal/chacha8rand
+#15 5.202 internal/coverage/rtcov
+#15 5.232 internal/godebugs
+#15 5.266 internal/goexperiment
+#15 5.289 internal/goos
+#15 5.323 internal/profilerecord
+#15 5.351 internal/runtime/atomic
+#15 5.445 internal/runtime/syscall
+#15 5.473 internal/runtime/exithook
+#15 5.483 internal/stringslite
+#15 5.515 runtime/internal/math
+#15 5.531 runtime/internal/sys
+#15 5.542 cmp
+#15 5.556 internal/itoa
+#15 5.581 internal/race
+#15 5.602 math/bits
+#15 5.663 runtime
+#15 5.674 math
+#15 6.177 unicode/utf8
+#15 6.241 sync/atomic
+#15 6.359 unicode
+#15 6.709 internal/asan
+#15 6.724 internal/msan
+#15 6.741 encoding
+#15 6.758 unicode/utf16
+#15 6.787 container/list
+#15 6.858 crypto/internal/alias
+#15 6.878 crypto/subtle
+#15 6.922 crypto/internal/boring/sig
+#15 6.962 vendor/golang.org/x/crypto/cryptobyte/asn1
+#15 6.982 vendor/golang.org/x/crypto/internal/alias
+#15 7.001 internal/nettrace
+#15 7.017 golang.org/x/net/html/atom
+#15 7.071 log/internal
+#15 7.086 golang.org/x/text/encoding/internal/identifier
+#15 7.123 golang.org/x/text/internal/utf8internal
+#15 7.141 image/color
+#15 7.234 image/color/palette
+#15 7.273 github.com/shurcooL/sanitized_anchor_name
+#15 12.02 iter
+#15 12.02 internal/reflectlite
+#15 12.07 sync
+#15 12.40 slices
+#15 12.41 errors
+#15 12.47 internal/bisect
+#15 12.50 strconv
+#15 12.68 io
+#15 12.95 internal/oserror
+#15 12.97 path
+#15 13.06 internal/godebug
+#15 13.13 reflect
+#15 13.19 syscall
+#15 14.49 time
+#15 15.65 io/fs
+#15 15.66 internal/fmtsort
+#15 15.85 internal/syscall/unix
+#15 15.90 internal/filepathlite
+#15 15.94 internal/poll
+#15 15.98 internal/syscall/execenv
+#15 16.01 internal/testlog
+#15 16.05 bytes
+#15 16.41 context
+#15 16.52 os
+#15 16.62 math/rand/v2
+#15 16.80 strings
+#15 17.22 bufio
+#15 17.54 encoding/binary
+#15 17.71 fmt
+#15 17.98 internal/saferio
+#15 18.03 encoding/base64
+#15 18.20 sort
+#15 18.57 database/sql/driver
+#15 18.66 encoding/gob
+#15 18.80 database/sql
+#15 19.90 encoding/json
+#15 20.23 flag
+#15 20.69 compress/flate
+#15 21.08 hash
+#15 21.14 hash/crc32
+#15 21.20 path/filepath
+#15 21.24 crypto
+#15 21.29 crypto/cipher
+#15 21.48 archive/zip
+#15 21.51 crypto/internal/boring
+#15 21.58 crypto/aes
+#15 21.78 crypto/des
+#15 21.89 crypto/internal/edwards25519/field
+#15 22.06 crypto/internal/nistec/fiat
+#15 22.33 embed
+#15 22.42 crypto/internal/randutil
+#15 22.45 math/rand
+#15 22.70 math/big
+#15 23.10 crypto/internal/nistec
+#15 23.74 crypto/ecdh
+#15 23.94 crypto/sha512
+#15 24.13 crypto/internal/edwards25519
+#15 24.19 crypto/elliptic
+#15 24.42 crypto/internal/bigmod
+#15 24.50 crypto/internal/boring/bbig
+#15 24.53 encoding/asn1
+#15 24.67 crypto/rand
+#15 24.77 crypto/ed25519
+#15 24.93 crypto/hmac
+#15 25.00 vendor/golang.org/x/crypto/chacha20
+#15 25.10 vendor/golang.org/x/crypto/cryptobyte
+#15 25.10 vendor/golang.org/x/crypto/internal/poly1305
+#15 25.20 vendor/golang.org/x/sys/cpu
+#15 25.40 vendor/golang.org/x/crypto/chacha20poly1305
+#15 25.46 crypto/ecdsa
+#15 25.64 vendor/golang.org/x/crypto/hkdf
+#15 25.68 crypto/internal/hpke
+#15 25.81 vendor/golang.org/x/crypto/sha3
+#15 25.82 crypto/md5
+#15 25.93 crypto/rc4
+#15 25.97 crypto/rsa
+#15 26.04 crypto/internal/mlkem768
+#15 26.22 crypto/sha1
+#15 26.24 crypto/sha256
+#15 26.36 crypto/dsa
+#15 26.42 encoding/hex
+#15 26.44 encoding/pem
+#15 26.54 crypto/x509/pkix
+#15 26.56 vendor/golang.org/x/net/dns/dnsmessage
+#15 26.64 internal/singleflight
+#15 26.68 internal/concurrent
+#15 26.71 internal/weak
+#15 26.73 unique
+#15 26.95 net/netip
+#15 27.22 net/url
+#15 27.70 golang.org/x/net/html
+#15 27.86 net
+#15 28.86 regexp/syntax
+#15 29.74 regexp
+#15 30.38 github.com/andybalholm/cascadia
+#15 31.17 compress/gzip
+#15 31.29 vendor/golang.org/x/text/transform
+#15 31.38 crypto/x509
+#15 31.41 log
+#15 31.57 vendor/golang.org/x/text/unicode/bidi
+#15 31.95 vendor/golang.org/x/text/secure/bidirule
+#15 32.02 vendor/golang.org/x/text/unicode/norm
+#15 32.90 crypto/tls
+#15 32.90 vendor/golang.org/x/net/idna
+#15 33.34 net/textproto
+#15 33.61 vendor/golang.org/x/net/http/httpguts
+#15 33.68 vendor/golang.org/x/net/http/httpproxy
+#15 33.79 vendor/golang.org/x/net/http2/hpack
+#15 34.05 maps
+#15 34.10 mime
+#15 34.60 mime/quotedprintable
+#15 34.72 mime/multipart
+#15 35.09 net/http/internal
+#15 35.20 net/http/internal/ascii
+#15 35.26 io/ioutil
+#15 35.44 os/user
+#15 35.67 github.com/astaxie/beego/config
+#15 36.06 hash/adler32
+#15 36.12 compress/zlib
+#15 36.24 encoding/xml
+#15 36.48 net/http/httptrace
+#15 36.63 net/http
+#15 37.17 net/mail
+#15 37.40 net/smtp
+#15 37.57 github.com/astaxie/beego/utils
+#15 37.97 gopkg.in/yaml.v2
+#15 39.92 html
+#15 40.05 text/template/parse
+#15 41.11 text/template
+#15 42.38 html/template
+#15 43.46 github.com/shiena/ansicolor
+#15 43.50 github.com/PuerkitoBio/goquery
+#15 43.58 github.com/astaxie/beego/session
+#15 44.09 github.com/astaxie/beego/context
+#15 44.63 os/exec
+#15 44.63 github.com/astaxie/beego/logs
+#15 44.99 os/signal
+#15 45.14 github.com/astaxie/beego/context/param
+#15 45.17 github.com/astaxie/beego/grace
+#15 45.34 runtime/debug
+#15 45.53 text/tabwriter
+#15 45.58 go/token
+#15 45.63 runtime/pprof
+#15 45.76 go/scanner
+#15 45.97 go/ast
+#15 46.65 github.com/astaxie/beego/toolbox
+#15 46.99 go/build/constraint
+#15 47.15 golang.org/x/crypto/acme
+#15 47.21 go/internal/typeparams
+#15 47.25 go/parser
+#15 47.73 golang.org/x/text/transform
+#15 47.92 golang.org/x/text/unicode/bidi
+#15 48.30 golang.org/x/text/unicode/norm
+#15 48.35 golang.org/x/text/secure/bidirule
+#15 48.40 net/http/cgi
+#15 48.77 net/http/fcgi
+#15 49.13 github.com/TruthHun/gotil/filetil
+#15 49.15 golang.org/x/net/idna
+#15 49.17 golang.org/x/time/rate
+#15 49.25 hash/crc64
+#15 49.33 github.com/aliyun/aliyun-oss-go-sdk/oss
+#15 49.61 golang.org/x/crypto/acme/autocert
+#15 50.06 github.com/astaxie/beego
+#15 52.38 github.com/TruthHun/BookStack/conf
+#15 52.40 github.com/TruthHun/BookStack/models/store
+#15 52.47 net/http/cookiejar
+#15 52.66 net/http/httputil
+#15 52.67 github.com/TruthHun/BookStack/utils/html2md
+#15 52.85 github.com/TruthHun/gotil/cryptil
+#15 52.90 golang.org/x/text/encoding
+#15 53.06 golang.org/x/text/encoding/internal
+#15 53.11 golang.org/x/text/encoding/charmap
+#15 53.14 github.com/astaxie/beego/httplib
+#15 53.35 github.com/TruthHun/BookStack/oauth
+#15 53.48 github.com/TruthHun/gotil/util
+#15 53.60 golang.org/x/text/encoding/japanese
+#15 53.80 golang.org/x/text/encoding/korean
+#15 54.38 golang.org/x/text/encoding/simplifiedchinese
+#15 54.41 golang.org/x/text/encoding/traditionalchinese
+#15 55.03 golang.org/x/text/runes
+#15 55.12 golang.org/x/text/internal/tag
+#15 55.19 golang.org/x/text/encoding/unicode
+#15 55.19 golang.org/x/text/internal/language
+#15 55.31 github.com/alexcesaro/mail/mailer
+#15 55.40 github.com/astaxie/beego/orm
+#15 55.88 golang.org/x/text/internal/language/compact
+#15 56.07 golang.org/x/text/language
+#15 56.58 golang.org/x/text/encoding/htmlindex
+#15 56.68 golang.org/x/net/html/charset
+#15 56.77 github.com/TruthHun/html2article
+#15 57.28 github.com/dgrijalva/jwt-go
+#15 57.61 image
+#15 58.16 golang.org/x/image/bmp
+#15 58.30 golang.org/x/image/ccitt
+#15 58.46 golang.org/x/image/tiff/lzw
+#15 58.51 golang.org/x/image/tiff
+#15 58.75 image/internal/imageutil
+#15 58.76 compress/lzw
+#15 58.79 image/draw
+#15 58.86 image/jpeg
+#15 59.07 image/gif
+#15 59.18 image/png
+#15 59.30 github.com/go-ego/cedar
+#15 59.55 github.com/go-ego/gse/hmm
+#15 59.62 github.com/disintegration/imaging
+#15 60.06 internal/sysinfo
+#15 60.14 runtime/trace
+#15 60.21 testing
+#15 61.07 github.com/go-ego/gse/hmm/util
+#15 61.15 github.com/mssola/user_agent
+#15 61.32 gopkg.in/asn1-ber.v1
+#15 61.37 github.com/go-ego/gse
+#15 61.54 gopkg.in/ldap.v2
+#15 62.19 github.com/go-ego/gse/hmm/pos
+#15 62.43 github.com/axgle/mahonia
+#15 63.97 github.com/saintfish/chardet
+#15 64.20 github.com/TruthHun/gotil/strtil
+#15 64.27 github.com/TruthHun/gotil/ziptil
+#15 64.34 github.com/TruthHun/converter/converter
+#15 64.50 github.com/russross/blackfriday
+#15 65.26 github.com/TruthHun/gotil/mdtil
+#15 65.29 github.com/TruthHun/gotil/sitemap
+#15 65.36 github.com/hashicorp/go-version
+#15 65.50 golang.org/x/image/math/fixed
+#15 65.66 github.com/golang/freetype/raster
+#15 66.00 golang.org/x/image/font
+#15 66.07 github.com/golang/freetype/truetype
+#15 66.70 github.com/golang/freetype
+#15 66.78 github.com/lifei6671/gocaptcha
+#15 66.95 github.com/nfnt/resize
+#15 67.49 github.com/TruthHun/BookStack/graphics
+#15 67.61 github.com/araddon/dateparse
+#15 68.13 github.com/astaxie/beego/cache
+#15 68.40 github.com/astaxie/beego/utils/captcha
+#15 68.82 github.com/boombuler/barcode
+#15 68.95 github.com/boombuler/barcode/utils
+#15 69.30 github.com/boombuler/barcode/qr
+#15 69.71 log/syslog
+#15 69.83 github.com/kardianos/service
+#15 70.51 github.com/TruthHun/html2json/html2json
+#15 70.72 github.com/unknwon/com
+#15 71.10 github.com/astaxie/beego/plugins/cors
+#15 71.27 github.com/go-sql-driver/mysql
+#15 76.58 github.com/go-ego/gse/hmm/idf
+#15 76.70 github.com/TruthHun/BookStack/utils
+#15 77.36 github.com/TruthHun/BookStack/models
+#15 78.78 github.com/TruthHun/BookStack/commands/migrate
+#15 78.79 github.com/TruthHun/BookStack/controllers
+#15 78.89 github.com/TruthHun/BookStack/commands
+#15 79.23 github.com/TruthHun/BookStack/controllers/api
+#15 81.75 github.com/TruthHun/BookStack/commands/daemon
+#15 81.75 github.com/TruthHun/BookStack/routers
+#15 82.06 github.com/TruthHun/BookStack
+#15 DONE 85.0s
+
+#14 [stage-1  4/10] RUN wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
+time="2025-01-11T13:42:51+08:00" level=error msg="got 3 SIGTERM/SIGINTs, forcing shutdown"
+#14 CANCELED
+ERROR: failed to solve: Canceled: context canceled
